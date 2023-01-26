@@ -1,11 +1,11 @@
-import Login from "./components/Login";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
 import React from "react";
 import "./App.css";
-import NavTest from "./components/NavTest";
 
 function App() {
+  //return <Home />;
   return <Login />;
- 
 }
 
 export default App;

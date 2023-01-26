@@ -3,11 +3,14 @@ import { useState } from "react";
 import ReactDOM from "react-dom";
 import "../styles/Login.css";
 import logo from "../assets/logo.png";
+
 //nav
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
+import Home from "./Home";
 
 function LoginForm() {
   // React States
@@ -63,6 +66,11 @@ function LoginForm() {
     navigate("/signup");
   };
 
+  const navigateToHome = (event) => {
+    //  navigate to /signup
+    navigate("/home");
+  };
+
   const navigateForgotPassword = () => {
     //navigate to /forgotpassword
     navigate("/forgotpassword");
@@ -77,6 +85,7 @@ function LoginForm() {
   // JSX code for login form
   const renderForm = (
     <div className="form">
+      <img src={logo} className="logo" id="logo" alt="Built it logo" />
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Username </label>
@@ -109,13 +118,15 @@ function LoginForm() {
   return (
     <div className="app">
       <div className="login-form">
-        <img src={logo} className="logo" id="logo" alt="Built it logo" />
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+        {/* <img src={logo} className="logo" id="logo" alt="Built it logo" /> */}
+        {/* {isSubmitted ? <div>User is successfully logged in</div> : renderForm} */}
+        {isSubmitted ? <Navigate to="/home" /> : renderForm}
 
         {/* define routes */}
         <Routes>
           <Route exact path="/signup" element={<SignUp />} />
           <Route exact path="/forgotpassword" element={<ForgotPassword />} />
+          <Route exact path="/home" element={<Home />} />
         </Routes>
       </div>
     </div>
